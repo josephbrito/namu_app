@@ -1,0 +1,45 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: namu_habits_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_DATABASE: ${DB_NAME:-namu_habits}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+  backend:
+    container_name: namu_habits_backend
+    build:
+      context: ./backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: ${DB_PASSWORD:-root}
+      DB_NAME: ${DB_NAME:-namu_habits}
+    ports:
+      - "3000:3000"
+
+  mobile:
+    container_name: namu_habits_mobile
+    build:
+      context: ./mobile
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - "8082:8082"
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+
+volumes:
+  mysql_data:

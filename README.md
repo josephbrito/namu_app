@@ -52,7 +52,7 @@ docker compose up --build
 
 | Serviço | URL |
 | --- | --- |
-| API | http://localhost:3000 |
+| API | http://localhost:3000/habits |
 | MySQL | localhost:3306 |
 
 ### 2. App mobile
@@ -68,8 +68,8 @@ npx react-native run-android
 
 | Ambiente | URL |
 | --- | --- |
-| Emulador Android | `http://10.0.2.2:3000` |
-| Dispositivo físico | `http://IP_DA_SUA_MAQUINA:3000` (mesma rede Wi-Fi) |
+| Emulador Android | `10.0.2.2` |
+| Dispositivo físico | `IP_DA_SUA_MAQUINA` (mesma rede Wi-Fi IPV4) |
 
 Ajuste em `mobile/src/CAMINHO_DO_ARQUIVO_DE_CONFIG`.
 

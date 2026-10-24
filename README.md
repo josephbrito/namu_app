@@ -1,5 +1,3 @@
-# Teste processo seletivo - Namu
-
 https://github.com/user-attachments/assets/909202aa-8a57-4f49-ae86-e302beb11baa
 
 ## Namu Habits
